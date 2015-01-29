@@ -1,0 +1,39 @@
+﻿<div class="easyui-panel" data-options="fit:true,boarder:false">
+	<table class="easyui-datagrid" id="dgUsers"
+		data-options="url:'/manage/user/list',rownumbers:true,pagination:true,pageNumber:1,pageSize:10,pagePosition:'bottom',fit:true,toolbar:toolbar,singleSelect:true,showFooter:true">
+		<thead>
+			<tr>
+				<th data-options="field:'id',width:100">用户信息编号</th>
+				<th data-options="field:'username',width:100">用户名称</th>
+				<th data-options="field:'email'">邮箱地址</th>
+				<th data-options="field:'created_at'">注册日期</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+<script type="text/javascript">
+	var toolbar = [
+		{
+			text : '添加',
+			iconCls : 'icon-add',
+			handler : function(){
+				showMoWindow('/manage/user/new','添加新用户',400,240)
+			}
+		},
+		{
+			text : '编辑用户',
+			iconCls : 'icon-edit',
+			handler : function(){
+				var seleteduser = $('#dgUsers').datagrid('getSelected');
+				if(seleteduser){
+//				var node = $(#'dgUsers').datagrid('getSelected');
+//					$.messager.alert('提示',node);
+					showMoWindow('/manage/user/edit?id=' + seleteduser.id,'编辑用户',400,240);
+				}else{
+					$.messager.alert('提示','请选择一条记录后再进行编辑');
+				}
+			}
+		}
+	];
+
+</script>

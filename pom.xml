@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cxy</groupId>
+  <artifactId>maven_JRMS</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>maven_JRMS Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <jfinal.version>1.9</jfinal.version>
+    <mysql-connector-java.version>5.1.34</mysql-connector-java.version>
+    <jfinal-dreampie.version>1.2.1</jfinal-dreampie.version>
+    <druid.version>1.0.9</druid.version>
+    <beetl-core.version>2.1.3</beetl-core.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.jfinal</groupId>
+      <artifactId>jfinal</artifactId>
+      <version>${jfinal.version}</version>
+    </dependency>
+  <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>${mysql-connector-java.version}</version>
+  </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>cn.dreampie</groupId>
+      <artifactId>jfinal-dreampie</artifactId>
+      <version>${jfinal-dreampie.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>${druid.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.beetl</groupId>
+      <artifactId>beetl-core</artifactId>
+      <version>${beetl-core.version}</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+    <finalName>maven_JRMS</finalName>
+    <plugins>
+    <plugin>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jetty-maven-plugin</artifactId>
+      <version>8.1.8.v20121106</version>
+      <configuration>
+        <stopKey>stop</stopKey>
+        <stopPort>9999</stopPort>
+        <jvmArgs>-Xmx1024m -Xms256m -XX:PermSize=256M -XX:MaxPermSize=512M</jvmArgs>
+        <scanIntervalSeconds>5</scanIntervalSeconds>
+        <webAppConfig>
+          <contextPath>/</contextPath>
+        </webAppConfig>
+        <scanIntervalSeconds>0</scanIntervalSeconds>
+        <connectors>
+          <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+            <port>80</port>
+            <maxIdleTime>60000</maxIdleTime>
+          </connector>
+        </connectors>
+      </configuration>
+    </plugin>
+    <!--<plugin>-->
+      <!--<groupId>org.apache.tomcat.maven</groupId>-->
+      <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+      <!--<version>2.2</version>-->
+      <!--<configuration>-->
+        <!--<uriEncoding>UTF-8</uriEncoding>-->
+        <!--<port>9090</port>-->
+        <!--<path>/</path>-->
+        <!--&lt;!&ndash; 应用的部署位置 &ndash;&gt;-->
+      <!--</configuration>-->
+    <!--</plugin>-->
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,66 @@
+﻿<div class="easyui-panel" data-options="fit:true,boarder:false">
+	<table class="easyui-datagrid" id="dgRoles"
+		data-options="url:'/manage/role/list',rownumbers:true,pagination:true,pageNumber:1,pageSize:10,pagePosition:'bottom',fit:true,toolbar:toolbar,singleSelect:true,showFooter:true">
+		<thead>
+			<tr>
+				<th data-options="field:'id',width:100">角色信息编号</th>
+				<th data-options="field:'name',width:100">角色名称</th>
+				<th data-options="field:'value'">值</th>
+				<th data-options="field:'created_at'">注册日期</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+<script type="text/javascript">
+	var toolbar = [
+		{
+			text : '添加角色',
+			iconCls : 'icon-add',
+			handler : function(){
+				showMoWindow('/manage/role/new','添加新角色',400,240)
+			}
+		},
+		{
+			text : '编辑角色',
+			iconCls : 'icon-edit',
+			handler : function(){
+				var node = $('#dgRoles').datagrid('getSelected');
+				if(node){
+					showMoWindow('/manage/role/edit?id=' + node.id,'编辑用户',400,240);
+				}else{
+					$.messager.alert('提示','请选择一条记录后再进行编辑');
+				}
+			}
+		},
+		{
+			text : '删除角色',
+			iconCls : 'icon-edit',
+			handler : function(){
+				var node = $('#dgRoles').datagrid('getSelected');
+				if(node){
+					$.post('/manage/role/disable',{'id':node.id},function(json){
+						if(json)
+							{$.messager.alert('提示','删除成功');}
+						else
+							{$.messager.alert('提示','删除失败');}
+					},'json');
+				}
+				else
+					{
+					$.messager.alert('警告','请慎重删除角色\n角色包含有用户时无法删除');
+				}
+			}
+		},
+		{
+			text : '角色菜单编辑',
+			iconCls : 'icon-edit',
+			handler : function(){}
+		},
+		{
+			text : '角色权限编辑',
+			iconCls : 'icon-edit',
+			handler : function(){}
+		}
+	];
+
+</script>

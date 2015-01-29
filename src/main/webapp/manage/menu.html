@@ -1,0 +1,39 @@
+﻿<div class="easyui-panel" data-options="fit:true,boarder:false">
+	<table class="easyui-datagrid" id="dgMenu"
+		data-options="url:'/manage/menu/list',rownumbers:true,pagination:true,pageNumber:1,pageSize:10,pagePosition:'bottom',fit:true,toolbar:toolbar,singleSelect:true,showFooter:true">
+		<thead>
+			<tr>
+				<th data-options="field:'id',width:100">信息编号</th>
+				<th data-options="field:'name',width:100">名称</th>
+				<th data-options="field:'value'">值</th>
+				<th data-options="field:'created_at'">创建日期</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+<script type="text/javascript">
+	var toolbar = [
+		{
+			text : '添加',
+			iconCls : 'icon-add',
+			handler : function(){
+				showMoWindow('/manage/permission/new','添加权限',400,240)
+			}
+		},
+		{
+			text : '编辑用户',
+			iconCls : 'icon-edit',
+			handler : function(){
+				var node = $('#dgPerm').datagrid('getSelected');
+				if(node){
+//				var node = $(#'dgUsers').datagrid('getSelected');
+//					$.messager.alert('提示',node);
+					showMoWindow('/manage/permission/edit?id=' + node.id,'编辑用户',400,240);
+				}else{
+					$.messager.alert('提示','请选择一条记录后再进行编辑');
+				}
+			}
+		}
+	];
+
+</script>

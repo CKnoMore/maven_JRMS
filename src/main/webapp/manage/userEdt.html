@@ -1,0 +1,59 @@
+<div class="easyui-panel" data-options="fit:true,collapsible:false,minimizable:false,maximizable:false">
+    <div style="padding:10px 60px 20px 60px">
+        <form id="ff" method="post">
+            <input name="user.id" type="hidden" id="id" value="${user.id!0}">
+            <table cellpadding="5">
+                <tr>
+                    <td>用户名:</td>
+                    <td><input class="easyui-validatebox textbox" type="text"
+                               id="username" name="user.username" data-options="prompt:'请填写用户名',required:true"
+                               value="${user.username!}"></input></td>
+                </tr>
+                <tr>
+                    <td>邮箱地址:</td>
+                    <td><input class="easyui-validatebox textbox" type="text"
+                               id="email" name="user.email" data-options="prompt:'请填写正确的邮箱地址',required:true,validType:'email'"
+                               value="${user.email!}"></input></td>
+                </tr>
+                <tr>
+                    <td>移动电话:</td>
+                    <td><input class="easyui-validatebox textbox" type="text"
+                               id="phone" name="user.phone" data-options="prompt:请填写电话号码'',required:true"
+                               value="${user.phone!}"></input></td>
+                </tr>
+            </table>
+        </form>
+        <div style="text-align:center;padding:5px">
+            <a href="javascript:void(0)" class="easyui-linkbutton"
+               onclick="submitForm()">保存</a> <a href="javascript:void(0)"
+                                                class="easyui-linkbutton" onclick="$('form').reset();">清除</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function submitForm(){
+        var user = $("ff").serialize();
+        if ($('#id').val() > 0){
+            $.post('/manage/user/update',user, function(json){
+                if(json){
+                    alert('用户修改成功');
+                    $('popup').window('close');
+                    $('dgUsers').datagrid('reload')
+                }
+                else
+                    alert('用户修改失败');
+            },"json")
+        }
+        else{
+            $.post('manage/user/add',user,function(json){
+                if(json){
+                    alert('用户修改成功');
+                    $('popup').window('close');
+                    $('dgUsers').datagrid('reload')
+                }
+                else
+                    alert('用户修改失败');
+            },'json')
+        }
+    }
+</script>

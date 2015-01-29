@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="/libs/easyui-1.4/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/libs/easyui-1.4/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="/libs/easyui-1.4/demo/demo.css">
+<link rel="stylesheet" type="text/css" href="/libs/easyui-1.4/portal.css">
+<script type="text/javascript" src="/libs/jquery.js"></script>
+<script type="text/javascript" src="/libs/easyui-1.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/libs/easyui-1.4/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/libs/easyui-1.4/jquery.portal.js"></script>
+<script type="text/javascript" src="/libs/main.js"></script>
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north'" style="height:74px;padding:2px">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'west',border:false"
+				style="width:160px;padding:2px">
+				<img src="/images/logo.png" width="150px">
+			</div>
+			<div data-options="region:'east',border:false"
+				style="width:160px;padding:2px"></div>
+			<div data-options="region:'center',border:false" style="padding:2px">
+			<a href="javascript:void(0)" onclick="doLogin()" >点击登录</a>
+			</div>
+		</div>
+	</div>
+	<div data-options="region:'south'"
+		style="height:40px;padding:2px;text-align:center">2014版权所有</div>
+	<div data-options="region:'west',title:'操作菜单'"
+		style="width:200px;padding:2px">
+		<ul>
+			<li><a href="javascript:void(0)"
+				onclick="showTab('用户管理','/manage/user/index')">用户管理</a>
+			</li>
+			<li><a href="javascript:void(0)"
+				onclick="showTab('角色管理','/manage/role/index')">角色管理</a>
+			</li>
+			<li><a href="javascript:void(0)"
+				onclick="showTab('菜单管理','/manage/menu/index')">菜单管理</a>
+			</li>
+			<li><a href="javascript:void(0)"
+				   onclick="showTab('权限管理','/manage/permission/index')">权限管理</a>
+			</li>
+		</ul>
+	</div>
+	<div data-options="region:'east',title:'快捷操作'"
+		style="width:200px;padding:2px"></div>
+	<div data-options="region:'center',border:false">
+		<div id="tabMain" class="easyui-tabs" data-options="fit:true">
+			<div title="欢迎页" style="padding:20px;"
+				data-options="href:'welcome.html',fit:true,animate:true"></div>
+		</div>
+	</div>
+	<div id="winLogin" class="easyui-window" title="用户登录"
+		data-options="modal:true,closed:false,collapsible:false,minimizable:false,maximizable:false,closed:true"
+		style="width:400px;height:300px">
+		<div style="padding:10px 60px 10px 60px">
+			<form id="ff"  method="post">
+				<table cellpadding="5">
+					<tr>
+						<td width="80px">用户名称:</td>
+						<td width="150px"><input class="easyui-textbox" type="text"
+							name="username" data-options="required:true"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>用户密码:</td>
+						<td><input class="easyui-textbox" type="text" name="password"
+							data-options="required:true"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>验证码:</td>
+						<td><input class="easyui-textbox" type="text" name="code"
+							data-options="required:true"></input><img id="code" src="/image"
+							title="点击刷新" onclick="$(this).attr('src','/image?t='+new Date())">
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="checkbox" name="rm" value="true">记住我</input>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">xiaoming/xiaoming 管理员<br>xiaohong/xiaohong
+							普通用户</td>
+					</tr>
+				</table>
+			</form>
+			<div style="text-align:center;padding:5px">
+				<a href="javascript:void(0)" class="easyui-linkbutton"
+					data-options="iconCls:'icon-tip'" onclick="submitForm()">登录</a> <a
+					href="javascript:void(0)" class="easyui-linkbutton"
+					data-options="iconCls:'icon-clear'" onclick="clearForm()">清除</a>
+			</div>
+		</div>
+	</div>
+	<div id="popup"></div>
+</body>
+<script type="text/javascript">
+	function doLogin() {
+		$('#code').attr('src', '/image?t=' + new Date());
+		$('#winLogin').window('open');
+	}
+	function clearForm() {
+		$('#ff').form('clear');
+	}
+	function showTab(title, url) {
+		var tab = $('#tabMain').tabs('getTab', title);
+		if (tab)
+			$('#tabMain').tabs('select', title);
+		else
+			$('#tabMain').tabs('add', {
+				title : title,
+				href : url,
+				closable : true
+			});
+	}
+</script>
+</html>

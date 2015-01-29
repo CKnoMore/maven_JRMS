@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/config/AppConfig.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/config/AppConstants.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/ext/shiro/MyJdbcAuthzService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/ext/shiro/MyJdbcRealm.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/Follower.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/Menu.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/Permission.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/Role.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/RoleMenu.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/RolePermission.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/Token.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/User.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/UserInfo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/UserMenu.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cxy/model/UserRole.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/application.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/shiro-ehcache.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/shiro.ini" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/sql" charset="UTF-8" />
+  </component>
+</project>
